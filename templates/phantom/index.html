@@ -1,0 +1,38 @@
+
+{% extends 'bases/_base.html' %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+
+{% block content %}
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Это наш сайт для объявлений<br />
+								<a href="http://html5up.net">HTML5 UP</a>.</h1>
+								<p>Добро пожаловать</p>
+							</header>
+							<section class="tiles">
+								{% for advertisement in advertisements %}
+								<article class="style8">
+									<span class="image">
+										<img src="{{advertisement.images.all.first.get_absolute_image_url}}" alt="" height="320px" />
+									</span>
+									<a href="{{advertisement.get_absolute_url}}">
+										<h2>{{advertisement.title}}</h2>
+										<div class="content">
+											<p>{{advertisement.description|truncatewords:15}}</p>
+										</div>
+									</a>
+								</article>
+								{% endfor %}
+							</section>
+						</div>
+					</div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
